@@ -4,7 +4,6 @@ const login = "bienvenida.hbs"
 const User = require('../models/user.models')
 // const passport = require('passport')
 user.singup=(req,res)=>{
-
     res.render(register,{session:req.isAuthenticated(),layout: "user"})
 }
 user.singuppost = async (req,res)=>{
@@ -60,7 +59,7 @@ user.singuppost = async (req,res)=>{
 }
 user.singin=(req,res)=>{
     const {nombre} = req.body
-    res.render(login ,{nombre,session:req.isAuthenticated(),layout: "user"})
+    res.redirect('/')
 }
 user.singinpost = (req,res)=>{
     const {email ,password}= req.body
