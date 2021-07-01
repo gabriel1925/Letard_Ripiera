@@ -82,4 +82,10 @@ user.logout = (req, res) => {
     req.flash("error", "Has cerrado session");
     res.redirect("/"); 
 };
+user.singupCamion = (req,res)=>{
+    res.render('registerCamion')
+}
+user.singupCamionpost = (req,res)=>{
+    res.send('ok')
+}
 module.exports = user

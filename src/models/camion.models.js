@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs')
 const camionSchema = new Schema({
     marca:{type:String, required:true },
     modelo:{ type: String, required:true},
+    patente:{type : String , required:true},
     capacidad:{type:Number},
     choferActual:{type:String}
 })

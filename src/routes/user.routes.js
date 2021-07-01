@@ -12,5 +12,8 @@ router.post('/singin', passport.authenticate("local", {
     failureRedirect: "/fallo",
     failureFlash: true,
   }))
+router.get('/Singupcamion', user.singupCamion)
+router.post('/singupCamion', user.singupCamionpost)
+
 router.get('/logout', user.logout)
 module.exports = router
