@@ -1,18 +1,59 @@
 <main class="container pt-3">
-    <h1>Consumo total del expendedor: 8522L</h1>
+    <h1 class="text-center">Consumo total del expendedor: 8522L</h1>
     <div class="row pt-3">
-        <div class="col-6">
-            asdas
+        <div class="col-sm-12 col-lg-6">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
-        <div class="col-6">asdas</div>
+        <div class="col-sm-12 col-lg-6">
+            <div>
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
     </div>
 </main>
 <style>
     main{
         width: 100%;
         height: 100%;
-        background-color: black;
-        color:white;
+        background-color: white;
+        color:grey;
     }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+<script>
+moment.locale('es-mx');
+    const labels = [
+  moment().subtract(11, 'month').format('MMMM'),
+  moment().subtract(10, 'month').format('MMMM'),
+  moment().subtract(9, 'month').format('MMMM'),
+  moment().subtract(8, 'month').format('MMMM'),
+  moment().subtract(7, 'month').format('MMMM'),
+  moment().subtract(6, 'month').format('MMMM'),
+  moment().subtract(5, 'month').format('MMMM'),
+  moment().subtract(4, 'month').format('MMMM'),
+  moment().subtract(3, 'month').format('MMMM'),
+  moment().subtract(2, 'month').format('MMMM'),
+  moment().subtract(1, 'month').format('MMMM'),
+  moment().format('MMMM')
+];
+console.log(Date.now())
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Estadistica de Consumo',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: [10, 10, 5, 2, 20, 30, 44, 45 ,22 ,89 , 32, 15],
+  }]
+};
+    const config = {
+        type: 'bar',
+        data,
+        options: {}
+    };
+    var myChart = new Chart(document.getElementById('myChart'),config);
+    var myChart = new Chart(document.getElementById('myChart2'),config);
+</script>
