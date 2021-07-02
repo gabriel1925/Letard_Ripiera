@@ -67,6 +67,7 @@ app.set("view engine", ".hbs");
     // routes
     app.use(require ('../routes/index.routes'))
     app.use(require("../routes/user.routes"))
+    app.use(require('../routes/consumo.routes'))
 
 
     

@@ -4,7 +4,7 @@ const login = "bienvenida.hbs"
 const User = require('../models/user.models')
 // const passport = require('passport')
 user.singup=(req,res)=>{
-    res.render(register,{session:req.isAuthenticated(),layout: "user"})
+    res.render(register,{session:req.isAuthenticated()})
 }
 user.singuppost = async (req,res)=>{
     const {nombre,apellido , email, password,tipoDeUsuario,dni, confirmPassword,telefono}= req.body
