@@ -3,14 +3,17 @@ const register = "register.hbs"
 const login = "bienvenida.hbs"
 const User = require('../models/user.models')
 // const passport = require('passport')
+// controlador de registro pasado por GET
 user.singup=(req,res)=>{
     res.render(register,{session:req.isAuthenticated()})
 }
+// verificador del registro de los parametros aceptados 
 user.singuppost = async (req,res)=>{
     const {nombre,apellido , email, password,tipoDeUsuario,dni, confirmPassword,telefono}= req.body
     console.log(req.body)
     console.log("hola")
     const errors = []
+    // Verifico los errores de registro
     if(nombre.length <=0){
         errors.push({text:"Por favor inserte su nombre"})
     }
@@ -57,10 +60,12 @@ user.singuppost = async (req,res)=>{
         }
     }
 }
+//controlador de el logeo por GET
 user.singin=(req,res)=>{
     const {nombre} = req.body
     res.redirect('/')
 }
+//Verifica y logea al usuario
 user.singinpost = (req,res)=>{
     const {email ,password}= req.body
     const errors = []
@@ -76,15 +81,44 @@ user.singinpost = (req,res)=>{
     }
     if(errors.length == 0) res.send("ok")
 }
+// Mata la session del usuario
 user.logout = (req, res) => {
     req.logout();
     req.flash("error", "Has cerrado session");
     res.redirect("/"); 
 };
+// controlador de /singupcamion por GEt
 user.singupCamion = (req,res)=>{
     res.render('registerCamion')
 }
+//recive el pedido de carga para registrar el camion en el sistema
 user.singupCamionpost = (req,res)=>{
     res.send('ok')
+}
+//Cuando ingrese por primera vez colocamos este uuario para poder ingresar 
+user.createAdmin = async (req,res)=>{
+    let nombre,apellido , email, password,tipoDeUsuario,dni,telefono
+    email= 'admin@admin'
+    password = 'admin1234'
+    tipoDeUsuario = 'on'
+    nombre = 'gabriel'
+    apellido = 'vauccassovitch'
+    telefono='2612496785'
+    dni=38908755
+    const emailUser = await User.findOne({email:email})
+    console.log(emailUser)
+    if(emailUser){
+        // req.flash('error_msg',"ya este email esta registrado")
+        const errors = [{text:'este email ya esta registrado'}]
+        res.redirect('/consumo')
+    }else{
+
+        const newUser = new User({nombre,apellido , email, password,tipoDeUsuario,telefono,dni}) 
+        newUser.password= await newUser.encryptPassword(password)
+        await newUser.save()
+        // res.render(login,{session:req.isAuthenticated(),layout: "user"})
+        res.redirect('/consumo')
+    }
+
 }
 module.exports = user

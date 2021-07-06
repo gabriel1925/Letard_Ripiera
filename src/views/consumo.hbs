@@ -1,4 +1,4 @@
-<main class="container pt-3">
+<main class="container pt-3 ">
     <h1 class="text-center">Consumo total del expendedor: 8522L</h1>
     <div class="row pt-3">
         <div class="col-sm-12 col-lg-6">
@@ -46,13 +46,25 @@ const data = {
     label: 'Estadistica de Consumo',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [10, 10, 5, 2, 20, 30, 44, 45 ,22 ,89 , 32, 15],
+    data: [10, 10, 5, 2, 20, 30, 44, 45 ,22 ,89 , 32, 15]
   }]
 };
     const config = {
         type: 'bar',
         data,
-        options: {}
+        options: {
+            plugins: {
+                legend: {
+                    fontSize:'white',
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        }
     };
     var myChart = new Chart(document.getElementById('myChart'),config);
     var myChart = new Chart(document.getElementById('myChart2'),config);

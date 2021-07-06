@@ -9,4 +9,4 @@ const camionSchema = new Schema({
     capacidad:{type:Number},
     choferActual:{type:String}
 })
-modele.exports = mongose.model('Camion',camionSchema)
+module.exports = mongose.model('Camion',camionSchema)
