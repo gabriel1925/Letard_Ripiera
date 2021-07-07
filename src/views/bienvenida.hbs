@@ -8,11 +8,11 @@
         <div class="fondo">
             <img src="/public/imgs/Portada.jpg" alt="portada">
         </div>
-        <div class="triangulo2 animated fadeIn">
+        <div class="triangulo2 animated fadeIn d-none d-sm-block">
             <img src="/public/imgs/triangulo2.png" alt="waves">
         </div>
     </div>
-    <div class="acount text-center animateddd fadeIn">
+    <div class="acount text-center animateddd fadeIn d-none d-sm-block">
         <h1 class="text-center mb-3 animatedd fadeInLeft">Bienvenidos</h1>
 
         <form action="/singin" method="POST" class="form-group">
@@ -22,6 +22,20 @@
                 placeholder="Contraseña">
 
             <button class="btn btn-success centrar animateddd fadeInRight mb-1">Ingresar</button>
+        </form>
+        {{!-- <a href="/register" class="btn btn-warning mb-3 animateddd fadeInRight">Registrar</a> --}}
+    </div>
+    {{!-- para celular --}}
+     <div class="acount text-center d-none d-xs-block ">
+        <h1 class="text-center mb-3  fadeInLeft">Bienvenidos</h1>
+
+        <form action="/singin" method="POST" class="form-group">
+            <input name="email" class="form-control centrar text-center  " type="email"
+                placeholder="Email">
+            <input name="password" class="form-control centrar text-center  " type="password" focus
+                placeholder="Contraseña">
+
+            <button class="btn btn-success centrar   mb-1">Ingresar</button>
         </form>
         {{!-- <a href="/register" class="btn btn-warning mb-3 animateddd fadeInRight">Registrar</a> --}}
     </div>
