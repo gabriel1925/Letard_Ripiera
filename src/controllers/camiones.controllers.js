@@ -12,7 +12,7 @@ camiones.historialDeChoferes = async (req,res)=>{
     res.render("historialDeChoferes")
 }
 // controladores de la administracion de los camioneros 
-camion.administracion = (req,res)=>{
+camiones.administracion = (req,res)=>{
     res.render('adminCamion')
 }
 module.exports = camiones
