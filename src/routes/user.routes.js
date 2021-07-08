@@ -17,4 +17,6 @@ router.post('/singupCamion', isAuthenticated,user.singupCamionpost)
 
 router.get('/logout', user.logout)
 router.get('/createAdmin', user.createAdmin)
+
+router.get("/adminAdministradores",isAuthenticated, user.adminadministradores)
 module.exports = router

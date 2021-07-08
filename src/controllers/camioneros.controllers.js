@@ -8,7 +8,10 @@ camioneros.index = (req,res)=>{
     res.render('camioneros')
 }
 
-
+// 
+camioneros.camionesutilizados = async (req,res)=>{
+    res.render('camionesUtilizados')
+}
 
 // controladores de la administracion de los camioneros 
 camioneros.administracion = (req,res)=>{

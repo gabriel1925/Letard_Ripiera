@@ -121,4 +121,8 @@ user.createAdmin = async (req,res)=>{
     }
 
 }
+
+user.adminadministradores = async (req,res)=>{
+    res.render("adminadministradores")
+}
 module.exports = user
