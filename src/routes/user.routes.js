@@ -9,7 +9,7 @@ router.post('/singup',user.singuppost)
 router.get('/singin',authenticatedviews,user.singin)
 router.post('/singin', passport.authenticate("local", {
     successRedirect: "/consumo",
-    failureRedirect: "/fallo",
+    failureRedirect: "/",
     failureFlash: true,
   }))
 router.get('/Singupcamion', isAuthenticated,user.singupCamion)
