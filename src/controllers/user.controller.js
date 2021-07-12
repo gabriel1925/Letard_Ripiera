@@ -4,14 +4,25 @@ const login = "bienvenida.hbs"
 const User = require('../models/user.models')
 // const passport = require('passport')
 // controlador de registro pasado por GET
-user.singup=(req,res)=>{
-    res.render(register,{session:req.isAuthenticated()})
+user.singup= async(req,res)=>{
+    // console.log(req.isAuthenticated())
+    // console.log(req.headers.referer)
+    let banderaRegistro, usuarios
+    // Verifico de que ruta viene para colocar el check 
+    if(req.headers.referer=== "http://localhost/adminAdministradores"){
+        console.log(await User.find({tipoDeUsuario:true}))
+
+        banderaRegistro = true
+    }else{
+        banderaRegistro = false
+        console.log(await User.find({tipoDeUsuario:false}))
+    }
+    res.render(register,{session:req.isAuthenticated(),banderaRegistro})
 }
 // verificador del registro de los parametros aceptados 
 user.singuppost = async (req,res)=>{
-    const {nombre,apellido , email, password,tipoDeUsuario,dni, confirmPassword,telefono}= req.body
-    console.log(req.body)
-    console.log("hola")
+    let {nombre,apellido , email, password,tipoDeUsuario,dni, confirmPassword,telefono}= req.body
+    // console.log(req.body)
     const errors = []
     // Verifico los errores de registro
     if(nombre.length <=0){
@@ -51,12 +62,20 @@ user.singuppost = async (req,res)=>{
             const errors = [{text:'este email ya esta registrado'}]
             res.render(register,{ errors,nombre,session:req.isAuthenticated(),layout: "user"})
         }else{
-
+            // conversimos el tipo de usuario a booleano
+            console.log(tipoDeUsuario)
+            if (tipoDeUsuario == 'on'){
+                console.log('pase')
+                tipoDeUsuario = true
+            }else{
+                console.log('no pase')
+                tipoDeUsuario = false
+            }
             const newUser = new User({nombre,apellido , email, password,tipoDeUsuario,telefono,dni}) 
             newUser.password= await newUser.encryptPassword(password)
             await newUser.save()
             // res.render(login,{session:req.isAuthenticated(),layout: "user"})
-            res.redirect('/')
+            res.redirect('/consumo')
         }
     }
 }
@@ -100,7 +119,7 @@ user.createAdmin = async (req,res)=>{
     let nombre,apellido , email, password,tipoDeUsuario,dni,telefono
     email= 'admin@admin'
     password = 'admin1234'
-    tipoDeUsuario = 'on'
+    tipoDeUsuario = true
     nombre = 'gabriel'
     apellido = 'vauccassovitch'
     telefono='2612496785'
@@ -123,6 +142,23 @@ user.createAdmin = async (req,res)=>{
 }
 
 user.adminadministradores = async (req,res)=>{
-    res.render("adminadministradores")
+    let usuarios =await User.find({tipoDeUsuario:true})
+    datosPasados = []
+    usuarios.map(e=>{
+        let dato = {}
+        dato._id = e._id
+        dato.nombre = e.nombre
+        dato.apellido = e.apellido
+        dato.email = e.email
+        dato.password = e.password
+        dato.telefono = e.telefono
+        dato.tipoDeUsuario = e.tipoDeUsuario
+        dato.dni = e.dni
+        datosPesados = datosPasados.unshift(dato)
+        console.log("dato")
+        console.log(dato)
+    })
+    console.log(datosPasados)
+    res.render("adminadministradores",{usuarios:datosPasados})
 }
 module.exports = user

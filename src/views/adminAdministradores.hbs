@@ -20,39 +20,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Roberto</td>
-                    <td>Butron</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
-                    <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a>
-                        <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Juan Pablo</td>
-                    <td>Butron</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
-                    <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a>
-                        <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gabriel</td>
-                    <td>Vauccassovitch</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
-                    <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a>
-                        <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
-                    </td>
-                </tr>
+                {{#each usuarios}}
+                    <tr>
+                        <td>{{nombre}}</td>
+                        <td>{{apellido}}</td>
+                        <td>{{dni}}</td>
+                        <td>{{telefono}}</td>
+                        <td>{{email}}</td>
+                        <td>
+                            {{>editarUser}}
+                            {{!-- <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a> --}}
+                            <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
+                        </td>
+                    </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

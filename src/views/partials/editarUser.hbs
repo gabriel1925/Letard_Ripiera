@@ -1,0 +1,44 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#a{{_id}}">
+  <i class="bi-pencil"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="a{{_id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Editar {{nombre}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/editar/{{_id}}" class="form-group">
+            <input type="text" name="nombre" value="{{nombre}}" required>
+            <input type="text" name="apellido" value="{{apellido}}" required>
+            <input type="email" name="email" value="{{email}}" required >
+            {{tipoDeUsuario}}
+            {{#if tipoDeUsuario}}
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        administrador
+                    </label>
+                </div>           
+            {{else}}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                    <label class="form-check-label" for="flexCheckChecked">
+                        administrador
+                    </label>
+                </div>  
+            {{/if}}
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar </button>
+      </div>
+    </div>
+  </div>
+</div>

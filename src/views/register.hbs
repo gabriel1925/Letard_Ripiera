@@ -13,11 +13,19 @@
                             <div class="form-group"><input class="form-control" id="contra" type="password" placeholder="Contraseña" name="password" /></div>
                             <div class="form-group"><input class="form-control" id="repcontra" type="password" placeholder="Repita la contraseña" name="confirmPassword" /></div>
                             <div class="form-check form-switch color-success">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="tipoDeUsuario">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Es administrador 
+                                {{#if banderaRegistro}}
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="tipoDeUsuario" checked>
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">Es administrador 
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    </label>
+                                {{else}}
+                                    
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="tipoDeUsuario">
+                                    <label class="form-check-label" for="flexSwitchCheckChecked">Es administrador 
 
-                              <svg class="bi flex-shrink-0 me-2 d-none" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-                            </label>
+                                    <svg class="bi flex-shrink-0 me-2 d-none" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    </label>
+                                {{/if}}
 
                             </div>
                             <div class="form-group"><input class="form-control" id="telefono" type="tel" placeholder="Telefono" name="telefono" /></div>
