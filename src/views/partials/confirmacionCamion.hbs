@@ -1,0 +1,43 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success guardar" data-bs-toggle="modal" data-bs-target="#b{{_id}}">
+  Guardar
+</button>
+
+<!-- Modal -->
+<div class="modal fade confirmaconcerrar" id="b{{_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Seguro de cambiar el usuario {{nombre}}</h5>
+        <button type="button" class="btn-close cerraConfirmacion" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>
+          Nombre:
+        <span class="cambioNombre"></span>
+        </h4>
+        <h4>
+          Apellido:
+        <span class="cambioApellido"></span>
+        </h4>
+        <h4>
+          DNI:
+        <span class="cambioDNI"></span>
+        </h4>
+        <h4>
+          Telefono:
+        <span class="cambioTelefono"></span>
+        </h4>
+        <h4>
+          Email:
+        <span class="cambioEmail"></span>
+        </h4>
+        <br>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-secondary cerraConfirmacion">Cerrar</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>

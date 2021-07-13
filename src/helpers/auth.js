@@ -14,7 +14,7 @@ helpers.authenticatedviews = (req,res,next)=>{
     const session =req.isAuthenticated()
     if (req.isAuthenticated()){
         req.flash('error', 'No autorizado')
-        res.redirect('/')
+        res.redirect('/consumo')
     }else{
         return next()
     }

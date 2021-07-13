@@ -53,7 +53,7 @@ user.singuppost = async (req,res)=>{
         errors.push({text:"la contraseña deberia ser mayor de 6 caracteres"})
     }
     if(errors.length >0){
-        res.render(register,{errors, nombre, email, password, confirmPassword,session:req.isAuthenticated(),layout: "user"})
+        res.render(register,{errors, nombre, email, password, confirmPassword,session:req.isAuthenticated()})
     }else{
         const emailUser = await User.findOne({email:email})
         console.log("este email esta repetido",emailUser)

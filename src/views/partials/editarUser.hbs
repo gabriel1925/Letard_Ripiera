@@ -12,33 +12,51 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/editar/{{_id}}" class="form-group">
-            <input type="text" name="nombre" value="{{nombre}}" required>
-            <input type="text" name="apellido" value="{{apellido}}" required>
-            <input type="email" name="email" value="{{email}}" required >
-            {{tipoDeUsuario}}
-            {{#if tipoDeUsuario}}
+            <form action="/editar/{{_id}}" class="form-group text-center">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" name="nombre" value="{{nombre}}" required class="form-control text-center">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" name="apellido" value="{{apellido}}" required class="form-control text-center">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="number" name="dni" value="{{dni}}" class="form-control text-center">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="text" name="telefono" value="{{telefono}}" required class="form-control text-center">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" value="{{email}}" required  class="form-control text-center">
+                {{#if tipoDeUsuario}}
+                    <div class="form-check text-start checkCenter ">
+                        <input class="form-check-input " type="checkbox" value=""  checked>
+                        <label class="form-check-label " for="flexCheckChecked">
+                            administrador
+                        </label>
+                    </div>           
+                {{else}}
+                    <div class="form-check text-start m-auto">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <label class="form-check-label" for="flexCheckChecked">
+                            administrador
+                        </label>
+                    </div>  
+                {{/if}}
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" name="password" required class="form-control text-center">
+                <label for="password" class="form-label">Repetir Contraseña</label>
+                <input type="password" name="password" required class="form-control text-center">
+
                 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                        administrador
-                    </label>
-                </div>           
-            {{else}}
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                    <label class="form-check-label" for="flexCheckChecked">
-                        administrador
-                    </label>
-                </div>  
-            {{/if}}
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar </button>
-      </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                {{>confirmacionCamion}}
+            </form>  
+        </div>
     </div>
   </div>
 </div>
+<style>
+    .checkCenter{
+        width: 150px;
+        height: 20px;
+        margin: 0 auto;
+    }
+</style>

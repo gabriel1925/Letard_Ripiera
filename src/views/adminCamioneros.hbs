@@ -21,40 +21,66 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each usuarios }}
                 <tr>
-                    <td>Roberto</td>
-                    <td>Butron</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
+                    <td>{{nombre}}</td>
+                    <td>{{apellido}}</td>
+                    <td>{{dni}}</td>
+                    <td>{{teleono}}</td>
+                    <td>{{email}}</td>
                     <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a> 
+                        {{>editarUser}} 
                         <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
                     </td>
                 </tr>
-                <tr>
-                    <td>Juan Pablo</td>
-                    <td>Butron</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
-                    <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a>
-                        <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Gabriel</td>
-                    <td>Vauccassovitch</td>
-                    <td>21215582</td>
-                    <td>2612223366</td>
-                    <td>info@electrosof.com.ar</td>
-                    <td>
-                        <a href="/modificar/:id" class="btn btn-warning d-inline"><i class="bi-pencil"></i></a> 
-                        <a href="/borrar/:id" class="btn btn-danger "> <i class="bi-trash"></i> </a>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
 </div>
+<script>
+                                          
+                                       
+  document.addEventListener("DOMContentLoaded", function(event) {
+    let bottonTomarDatos = Array.prototype.slice.apply(document.querySelectorAll('.guardar'))
+    //console.log(bottonTomarDatos)
+    bottonTomarDatos.map((e)=>{
+        e.addEventListener('click',(r)=>{
+            let arreglo = []
+            arreglo.push(r.path[2].children[1].children[0][0].value)
+            arreglo.push(r.path[2].children[1].children[0][1].value)
+            arreglo.push(r.path[2].children[1].children[0][2].value)
+            arreglo.push(r.path[2].children[1].children[0][3].value)
+            arreglo.push(r.path[2].children[1].children[0][4].value)
+            Array.prototype.slice.apply(document.querySelectorAll('.cambioNombre')).map((e)=>{
+                e.innerHTML = arreglo[0]
+            })
+            Array.prototype.slice.apply(document.querySelectorAll('.cambioApellido')).map((e)=>{
+                e.innerHTML = arreglo[1]
+            })
+            Array.prototype.slice.apply(document.querySelectorAll('.cambioDNI')).map((e)=>{
+                e.innerHTML = arreglo[2]
+            })
+            Array.prototype.slice.apply(document.querySelectorAll('.cambioTelefono')).map((e)=>{
+                e.innerHTML = arreglo[3]
+            })
+            Array.prototype.slice.apply(document.querySelectorAll('.cambioEmail')).map((e)=>{
+                e.innerHTML = arreglo[4]
+            })
+            console.log(arreglo)
+            //r.path[2].children[1].children[0][0]
+        })
+    })
+
+
+    //cerrar modal de confirmacion
+    let confirmacionCerrado = Array.prototype.slice.apply(document.querySelectorAll('.cerraConfirmacion'))
+    //console.log(confirmacionCerrado)
+    confirmacionCerrado.map(e=>{
+        e.addEventListener('click',(r)=>{
+            r.path[4].click()
+        })
+    })
+  });
+  
+</script>
