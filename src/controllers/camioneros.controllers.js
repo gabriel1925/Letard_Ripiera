@@ -2,10 +2,13 @@ const camioneros = {}
 const camionerosDb = require('../models/user.models.js')
 
 
-camioneros.index = (req,res)=>{
-    let cosa = camionerosDb.find()
+camioneros.index = async (req,res)=>{
+    let cosa = await camionerosDb.find()
     console.log(cosa)
     res.render('camioneros')
+}
+camioneros.soyChofer = async (req,res)=>{
+    res.send('Soy chofer')
 }
 
 // 

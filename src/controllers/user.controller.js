@@ -140,7 +140,7 @@ user.createAdmin = async (req,res)=>{
     }
 
 }
-
+// Cambios del adminiostrador 
 user.adminadministradores = async (req,res)=>{
     let usuarios =await User.find({tipoDeUsuario:true})
     datosPasados = []

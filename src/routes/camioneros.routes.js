@@ -2,9 +2,11 @@ const express = require('express')
 const camioneros = express.Router()
 
 const camionerosController = require('../controllers/camioneros.controllers.js')
-const {isAuthenticated} = require("../helpers/auth")
+const {isAuthenticated, authenticatedChofer} = require("../helpers/auth")
 
-camioneros.get('/choferes', camionerosController.index)
+camioneros.get('/choferes',isAuthenticated, camionerosController.index)
+camioneros.get('/Soychofer',authenticatedChofer,camionerosController.soyChofer)
+
 
 
 // peticiones de administracion en choferes
